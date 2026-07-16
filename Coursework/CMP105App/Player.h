@@ -55,7 +55,7 @@ private:
     const float TURN_DRAG = 1.0f;
     const float JUMP_FORCE = 4.5f;
     const float SPRINT_ANIM_THRESHOLD = 999.0f;     //1.2f * SPEED;     // set sprint anim threshold real high for now until (if) sprint frames are animated for new spritesheet
-    const float ACTIVATE_RANGE_SQUARED = 700.0f;
+    const float ACTIVATE_RANGE_SQUARED = 1250.0f;
 
 };
 

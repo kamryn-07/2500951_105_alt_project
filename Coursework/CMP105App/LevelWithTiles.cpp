@@ -93,10 +93,12 @@ LevelWithTiles::LevelWithTiles(sf::RenderWindow& window, Input& input, GameState
 	m_player.setEdges(0, WORLD_SIZE.x);
 
 	//m setup text
-	if (!m_font.openFromFile("font/bitcount.ttf")) std::cerr << "no font found";
-	m_alertText.setString("Who keeps turning\nthe wind off?");
+	if (!m_font.openFromFile("font/arial.ttf")) std::cerr << "no font found";
+	m_alertText.setOutlineColor(sf::Color::White);
+	m_alertText.setOutlineThickness(2.5f);
+	m_alertText.setString("a switch waits\ncome back afterward.");
 	m_alertText.setPosition({ 50, 150});
-	m_alertText.setCharacterSize(36);
+	m_alertText.setCharacterSize(22);
 	m_alertText.setFillColor(sf::Color::Black);
 	m_promptTimer = PROMPT_TIME;
 	if (!m_tileTexture.loadFromFile("gfx/tilemap.png")) std::cerr << "no tile image found";
@@ -159,28 +161,28 @@ void LevelWithTiles::update(float dt)
 	}
 	else if (m_player.getPosition().y > WORLD_SIZE.y)
 	{
-		m_alertText.setCharacterSize(24);
+		m_alertText.setCharacterSize(22);
 		m_alertText.setPosition(m_window.getView().getCenter());
 		m_alertText.setString("Press R to reset");
 	}
 	// show text if the player in lever range
 	else if (m_player.inLeverRange())
 	{
-		m_alertText.setCharacterSize(24);
+		m_alertText.setCharacterSize(22);
 		m_alertText.setPosition(m_window.getView().getCenter() + sf::Vector2f(-100.f, -150.f));
 		m_promptTimer = PROMPT_TIME;
 		if (!m_flagLeverPulled)
-			m_alertText.setString("Press F to fix\nthe wind");
+			m_alertText.setString("[F]");
 		else
-			m_alertText.setString("Better check\nthose flags");
+			m_alertText.setString("Exit opened.\nReturn to stage start");
 	}
 	else if (m_player.inEndRange())
 	{
-		m_alertText.setCharacterSize(24);
+		m_alertText.setCharacterSize(22);
 		m_alertText.setPosition(m_window.getView().getCenter() + sf::Vector2f(-100.f, -150.f));
 		m_promptTimer = PROMPT_TIME;
 		if (m_flagLeverPulled)
-			m_alertText.setString("Good job! Press\nF to end the day");
+			m_alertText.setString("[F] to clear");
 	}
 
 	if (m_player.getLeverPulled())
@@ -255,9 +257,11 @@ void LevelWithTiles::onEnd()
 	m_player.reset();
 	m_flagLeverPulled = false;
 	// reset alert text
-	m_alertText.setString("Who keeps turning\nthe wind off?");
+	m_alertText.setOutlineColor(sf::Color::White);
+	m_alertText.setOutlineThickness(2.5f);
+	m_alertText.setString("a switch waits\ncome back afterward.");
 	m_alertText.setPosition({ 50, 150 });
-	m_alertText.setCharacterSize(36);
+	m_alertText.setCharacterSize(22);
 	m_alertText.setFillColor(sf::Color::Black);
 	m_promptTimer = PROMPT_TIME;
 	// sfx

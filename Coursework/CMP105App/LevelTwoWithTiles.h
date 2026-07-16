@@ -5,6 +5,10 @@
 #include "Player.h"
 #include "Coin.h"
 #include "Flag.h"
+
+#include "KillObject.h"     // new additions woah
+#include "TriggerZone.h"
+
 #include <algorithm> // for clamp
 
 
