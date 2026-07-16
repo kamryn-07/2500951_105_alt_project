@@ -1,80 +1,56 @@
-# CMP105 Alternative Project
-
-_NOTE: This is an example based on the alternative project as if submitted for the Trunk assignment_
-
-## Game 
-
-**Dino Hanyman: Spanner in the Works** 
-
-A two-level platformer prototype developed as an alternative trunk project to extend for CMP105 students from 2026 onwards. This project has most of the base requirements for a group submission. In the first level, the player has to navigate to the far right-side of the screen, avoiding pitfalls, and activate a lever before returning to the start. In the second level the player must investigate the high wall, backtrack to a box and jump into it from below to reveal a coin, colliding with the coin grants the ability to double-jump, using which they can navigate to the end of the level.
-
-The engineering for this game is restricted to solely using the framework with few additions. 
-
-**Controls:** 
-
-WASD to move,
-Spacebar to jump,
-F to interact (prompts will appear when possible),
-R to reset (if you get stuck or fall down)
-P to pause,
-L-Control to dash,
-left mouseclick in the menu.
-
-***Extension suggestions***
-
-In addition to the proposal laid out below, there are several features which could usefully be added to this game as part of a branch project, here are a few:
-
-* The game cannot be paused
-* Entirely rework the player controller for precise teleportation-based movement rather than acceleration (which is odd in a platformer)
-* Write a textureLoader or textureManager class
-* Write a levelLoader that reads the tilemaps in from a file rather than them being hardcoded
-* Create a level editor where players can use the full tileset to create their own levels
-* Add more player actions -- the main character has a kick as part of their spritesheet
-* Add enemies with platform-restricted pathing 
-* Gravity manipulation 
-* Create a platforming setpiece to act as the final mechanical challenge
+# CMP105 Extension Proposal
 
 ## Student Details
 
-**Student Name:** Kamryn Robb
+**Name:** Kamryn Robb
 
-**Student Number:** 2500951
+**Team:** N/A
 
-**Course:** _CGT_
+**Course:** *CGT*
 
----
----
+**Abertay id:** 2500951
 
-# Proposal
+## Game Extended
 
-## Brief Overview of game 
+Dino Handyman: Spanner in the Works
 
-Dino Handyman: Spanner in the Works, will be a single-level metroidvania platformer where the play controls a small dinosaur. To begin with they will be able to jump, as the game progresses they will gain three skills -- dashing, double-jumping and attacking, in order to complete the game. The level will be setup so that progress is only possible with each ability, e.g., to cross the largest gap you will need to double-jump and to dash. The player will be timed while completing the level and at the end of the game, if they complete it without dying, they will be shown their time alongside the best time achieved. Additional levels could be created later thanks to the use of a data-driven level loading system which is used as the tilemap for the game. 
+author(s)
+
+*supplied project*
+
+## Title of Extension
+
+*I Wanna Be the Dino*
+
+## Brief Overview of game
+
+*"I Wanna Be the Dino", will be a simple level-based platformer 'rage game' in which the player controls a small dinosaur and must navigate through seemingly short and simple platformer courses, which happen to reveal themselves over the course of the gameplay to be full of deceit and intentionally bad gameplay practices. The player over the course of the levels will encounter unfair obstacles such as appearing/disappearing objects and sporadically moving objects which will be triggered after the player reaches certain positions within the level. The goal of the player is to navigate these 'unfair' obstacles to reach the end of the level where they can then leave. The game will feature a mostly black and white simple aesthetic which mirrors that of the gameplay's simple platforming premise, allowing for more focus to be put on contrasting objects and gameplay. The game's movement will be very simple and snappy to allow for more precision-oriented movements to be made, which will lead way for there to be some level of difficulty present within the levels.*
+
+
 
 ## Must Have Features
 
-* Spanner Throwing: The player will be able to press 'r' to throw a spanner in the direction they are facing with a slight arc before it falls to the ground. 
+* Trigger-able/Moving Hazards: There will be new hazards (on touch will reset the player to the start of the current level) implemented which will either move or reveal themselves in someway if triggered by the player's movement or position.
+* Overhaul Movement and Polish Movement: The movement of the player character will be entirely changed to allow for more 'precision' movements (e.g.: lower jump height and slower move speed, plus removal of acceleration entirely). Also fix some bugs and "polish" the base movement system, e.g. running into a wall and holding the same directional key during jumping preserves velocity.
 
-* Enemies: Gremlins will be in certain parts of the level and will move towards a player if they are in range. On collision with the player the level will be reset on collision with a spanner they will despawn.
+
 
 ## Should Have Features
 
-* Data-driven Level Loading: To create a level large enough to introduce the new mechanics without making the code a mess. 
+* Visual Overhaul: A change will be applied to (most) sprites in some form to allow for a more unique and abstract visual style to complement the simple gameplay. This could include: Main Menu (in accordance with the new name too), player sprite, tile maps for the background, regular ground, decorative and interactable objects.
+* Enhanced Death: In the nature of this being a rage game there should be a snappy kill-screen and a death counter which will read out to a file to persist across game reopening, just to emphasize what the game is all about.
 
-* Lives and Losing: The play will only have a three lives. If they fall off a platform or hit an enemyn they will lose one life and if they get to zero lives they will see a game over screen.
 
-* Pausing: The game will be able to be paused with a simple transparent overlay. Music will be paused similarly and resumed when play continues.
 
 ## Could Have Features
 
-* Leaderboard: The speed with which a player completes the level will be written to file and then displayed once the level is completed.
+* Varied Progression: Some parts in a level may require you to seek out some sort of collectible to progress to the next "room" of sorts, this could force the player into different paths and force them to have to anticipate more deceptive gameplay.
+* Even More Hazards? (Not Entirely): New "utility" objects and interactable objects will be scattered through the stage design, this would entail such things as jump pads and warps either further into the level or back through the level, being purely up to choice and the risk management of the player.
 
-* A Heads-up Display: Showing the time taken so far, the dash, wrench and double-jump cooldowns and the number of lives remaining will be shown fixed to the screen.
 
-* Gremlin Animations: The gremlins will have different animation cycles including walking, running, idle, and attacking, for various actions they can be performing. 
 
 ## Wish to Have Features
 
-* Checkpoints: There will be positions in the level where the player can restart from if they lose a life, should they have got far enough. These will be placed where the player gets new abilities.
+* A Final Challenge: An extra level added to the roster which would serve as the culmination of all gameplay elements in an "Arena" of sorts (one large gauntlet-like screen full of maze-like gameplay structure)
+* Animations \& Extra Visual Flare: Add extra animations for the player character when jumping and falling, and add extra animated objects for when they are in motion or appear in some regard.
 
-* Coyote Time: The platforming will be enhanced by coyote time, a grace period during which the player can still jump even if they are not on a platform. 
