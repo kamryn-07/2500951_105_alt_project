@@ -8,6 +8,7 @@
 
 #include "KillObject.h"     // new additions woah
 #include "TriggerZone.h"
+#include "Deathscreen.h"
 
 #include <algorithm> // for clamp
 
@@ -30,10 +31,13 @@ private:
 
     TileMap m_tilemap;
     TileMap m_bgtilemap;
-    Player m_player;
 
-    Coin m_coin;
-    GameObject m_boopBlock;
+    Deathscreen deathscreen;    // deathscreen scary stuff
+    Player m_player;
+    
+    float m_timeSnap;
+    float m_time;
+
     Flag m_flag;
 
     const sf::Vector2i WORLD_SIZE = { 2880, 648 };
@@ -45,12 +49,12 @@ private:
 
     sf::Vector2f m_wallPos = { 11 * 72, 5 * 72 };
 
+    std::vector<TriggerZone> m_triggerZones;	    // trigger zone vector
+    std::vector<TriggerObject> m_triggerObjects;    // '' obj
 
     std::vector<std::string> m_promptMessages =
     {
-        "Oh I'm stuck.\nMaybe I missed\nsomething back there?",
-        "I feel so powerful\nalmost like I\ncan double-jump",
-        "Press F to end the day"
+        "[F] to complete",
     };
 };
 

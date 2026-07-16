@@ -1,17 +1,21 @@
 #pragma once
-#include "Framework/GameObject.h"
+#include "TriggerObject.h"
 #include <iostream>
+#include <vector>
 
-class TriggerZone :
-    public GameObject
+class TriggerZone
 {
 public:
-    TriggerZone(sf::Vector2f size, sf::Vector2f pos);
+    TriggerZone(float pos);
 
-    void collisionResponse(GameObject& collider) override;
+    void onTrigger();
+    float getXPos();
 
 private:
     bool m_isTriggerable = true;
+    float m_xpos;
+
+    std::vector<TriggerObject> m_triggerObjects;
 
 };
 

@@ -21,7 +21,7 @@ Player::Player()
 	m_currAnim = &m_walk;
 	m_walk.setFrameSpeed(1.f / 10.f);
 	m_idle.setFrameSpeed(1.f / 4.f);
-	m_sprint.setFrameSpeed(1.4 / 15.0f);
+	m_sprint.setFrameSpeed(1.4f / 15.0f);
 
 	setCollisionBox({ {12,12}, { 45,51 } });
 
@@ -184,4 +184,5 @@ void Player::reset()
 	m_velocity = { 0,0 };
 	m_leverPulled = false;
 	m_gameEndTriggered = false;
+	m_reset = true;
 }

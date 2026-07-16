@@ -91,7 +91,7 @@ int main()
 	// Create level objects that may reference manager objects
 
 	Menu menu(window, input, gameState, audioManager);
-	LevelWithTiles tile_level(window, input, gameState, audioManager);
+	//LevelWithTiles tile_level(window, input, gameState, audioManager);
 	LevelTwoWithTiles tile_level_two(window, input, gameState, audioManager);
 	Scene* currentScene = &menu;
 
@@ -105,7 +105,7 @@ int main()
 	std::map<State, Scene*> sceneRegistry =
 	{
 		{State::MENU, &menu},
-		{State::LEVELONE, &tile_level},
+		//{State::LEVELONE, &tile_level},
 		{State::LEVELTWO, &tile_level_two}
 	};
 	

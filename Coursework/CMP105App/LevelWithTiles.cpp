@@ -1,3 +1,5 @@
+/*
+
 #include "LevelWithTiles.h"
 
 LevelWithTiles::LevelWithTiles(sf::RenderWindow& window, Input& input, GameState& gameState, AudioManager& audio)
@@ -268,3 +270,5 @@ void LevelWithTiles::onEnd()
 	m_audio.stopAllSounds();
 	m_audio.stopAllMusic();
 }
+
+*/

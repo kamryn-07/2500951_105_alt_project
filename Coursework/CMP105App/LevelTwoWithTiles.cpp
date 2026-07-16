@@ -43,10 +43,13 @@ LevelTwoWithTiles::LevelTwoWithTiles(sf::RenderWindow& window, Input& input, Gam
 		b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , 121, 122, 122, 122, 122, 123, b  , b  , b  , b  , b, b, b, b, b, b, b, b, b, b  , b  , b  , b  , b  , b  , b  , b  , b  ,
 		b  , b  , b  , 22  , b  , b  , b  , b  , b  , b  , b  , b  , 121, 122, 122, 122, 122, 123, b  , b  , b  , b  , b, b, b, b, b, b, b, b, b, b  , b  , b  , b  , b  , b  , b  , b  , b  ,
 		b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , 121, 122, 122, 122, 122, 123, b  , b  , b  , b  , b, b, b, b, b, b, b, b, b, b  , b  , b  , b  , b  , b  , b  , b  , b  ,
-		21 , 22 , 22 , 22 , 22 , 22 , 22 , 22 , 22 , 22 , 22 , 22 , 25 , 122, 122, 122, 122, 24 , 22 , 22 , 22 , 23 , b, b, b, b, b, b, b, b, b, 21 , 22 , 22 , 22 , 22 , 22 , 22 , 22 , 23 ,
-		141, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 143, b, b, b, b, b, b, b, b, b, 141, 142, 142, 142, 142, 142, 142, 142, 143
+		21 , 22 , 22 , 22 , b , b , 22 , 22 , 22 , 22 , 22 , 22 , 25 , 122, 122, 122, 122, 24 , 22 , 22 , 22 , 23 , b, b, b, b, b, b, b, b, b, 21 , 22 , 22 , 22 , 22 , 22 , 22 , 22 , 23 ,
+		141, 142, 142, 142, b, b, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 143, b, b, b, b, b, b, b, b, b, 141, 142, 142, 142, 142, 142, 142, 142, 143
 	};
 
+	// instantiate trigger zones
+	TriggerZone t0(200);
+	m_triggerZones.push_back(t0);
 
 	m_tilemap.loadTexture("gfx/tilemap.png");
 	m_tilemap.setTileSet(tileSet);
@@ -95,6 +98,7 @@ LevelTwoWithTiles::LevelTwoWithTiles(sf::RenderWindow& window, Input& input, Gam
 	m_player.setEdges(0, WORLD_SIZE.x);
 	m_player.setPosition({ 100, 100 });
 	m_player.setAudio(&m_audio);
+	m_player.setDeathscreen(deathscreen);
 
 	if (!m_font.openFromFile("font/arial.ttf")) std::cerr << "no font found";
 	m_alertText.setOutlineColor(sf::Color::White);
@@ -103,22 +107,10 @@ LevelTwoWithTiles::LevelTwoWithTiles(sf::RenderWindow& window, Input& input, Gam
 	m_alertText.setCharacterSize(22);
 	m_alertText.setFillColor(sf::Color::Black);
 
-	// other bits
-	sf::Vector2f boop_location = { 100, 72 * 2 + 100 };
-
 	if (!m_tileTexture.loadFromFile("gfx/tilemap.png")) std::cerr << "failed to find tile images";
-	m_coin.setTexture(&m_tileTexture);
-	m_coin.setPosition(boop_location);
-	m_coin.setSize({ 72,72 });
-	m_coin.setAlive(false);
-	m_coin.setCollisionBox({ { 0,0 }, { 72,72 } });
 
-	m_boopBlock.setTexture(&m_tileTexture);
-	m_boopBlock.setTextureRect({ {10 * 19,0}, { 18,18 } });
-	m_boopBlock.setAlive(false);
-	m_boopBlock.setCollisionBox({ { 0,0 }, { 72,72 } });
-	m_boopBlock.setPosition(boop_location);
-	m_boopBlock.setSize({ 72, 72 });
+	// m_boopBlock.setTexture(&m_tileTexture);
+	// m_boopBlock.setTextureRect({ {10 * 19,0}, { 18,18 } });
 
 	m_flag.setPosition({ 38 * 72, 5 * 72 });
 	m_flag.setSize({ 72,72 });
@@ -135,8 +127,6 @@ LevelTwoWithTiles::LevelTwoWithTiles(sf::RenderWindow& window, Input& input, Gam
 
 void LevelTwoWithTiles::onBegin()
 {
-	m_boopBlock.setAlive(false);
-	m_coin.setAlive(false);
 	m_player.setPosition({ 100, 100 });
 	m_audio.playMusicbyName("bgm3");
 }
@@ -144,7 +134,7 @@ void LevelTwoWithTiles::onBegin()
 void LevelTwoWithTiles::onEnd()
 {
 	// reset player
-	m_player.setCanDoubleJump(false);
+	m_player.setCanDoubleJump(true);
 	// sfx
 	m_audio.stopAllSounds();
 	m_audio.stopAllMusic();
@@ -166,9 +156,38 @@ void LevelTwoWithTiles::handleInput(float dt)
 
 void LevelTwoWithTiles::update(float dt)
 {
+
+	std::cout << m_player.getReset() << '\n';
+
 	m_player.update(dt);
 	m_flag.update(dt);
-	if (m_coin.isAlive()) m_coin.update(dt);
+
+	// update cumulative time
+	m_time += dt;
+
+	// reset ds after cd
+	if (m_player.getReset() && !m_player.getdsDebounce())
+	{
+		m_player.setdsDebounce(true);
+		m_timeSnap = m_time;
+		//m_player.getDeathscreen().setFillColor({ 255, 255, 255, 255 });
+	}
+	if (m_time - m_timeSnap >= 0.5f)
+	{
+		m_timeSnap = 0.0f;
+		m_player.setReset(false);
+		m_player.setdsDebounce(false);
+		//m_player.getDeathscreen().setFillColor({ 255, 255, 255, 255 });
+	}
+
+	// handle trigger zones
+	for (auto& t : m_triggerZones)
+	{
+		if (m_player.getPosition().x >= t.getXPos())
+		{
+			t.onTrigger();
+		}
+	}
 
 	// handle collisions
 	std::vector<GameObject>& level = *m_tilemap.getLevel();
@@ -178,36 +197,6 @@ void LevelTwoWithTiles::update(float dt)
 		{
 			m_player.collisionResponse(t);
 		}	
-	}
-
-	if (m_boopBlock.isAlive())
-	{
-		if (Collision::checkBoundingBox(m_player, m_boopBlock))
-		{
-			if (m_player.getPosition().y >= m_boopBlock.getPosition().y)
-			{
-				// if booped from below
-				m_boopBlock.setAlive(false);
-				m_coin.setAlive(true);
-			}
-			m_player.collisionResponse(m_boopBlock);
-
-		}
-	}
-
-	if (m_coin.isAlive())
-	{
-		if (Collision::checkBoundingBox(m_player, m_coin))
-		{
-			m_coin.setAlive(false);
-			m_player.setCanDoubleJump(true);
-		}
-	}
-
-	// turn block on when at wall.
-	if ((m_wallPos - m_player.getPosition()).length() < 75)
-	{
-		m_boopBlock.setAlive(true);
 	}
 
 	// reset if fallen too far
@@ -247,30 +236,13 @@ void LevelTwoWithTiles::checkAndSetMessages()
 		static_cast<float>(m_window.getSize().x), 
 		static_cast<float>(m_window.getSize().y) };
 	inner_top_left -= window_size * 0.25f;
-	// big wall 
-	if (!m_player.canDoubleJump() && 
-		(m_wallPos - m_player.getPosition()).length() < 75)
+
+	// complete level
+	if ((m_flag.getPosition() - m_player.getPosition()).length() < 75)
 	{
 		m_alertText.setCharacterSize(24);
 		m_alertText.setPosition(inner_top_left);
 		m_alertText.setString(m_promptMessages[0]);
-		
-	}
-	// double jump unlocked
-	else if (m_player.canDoubleJump() && 
-		(m_boopBlock.getPosition() - m_player.getPosition()).length() < 150)
-	{
-		m_alertText.setCharacterSize(24);
-		m_alertText.setPosition(inner_top_left);
-		m_alertText.setString(m_promptMessages[1]);
-	}
-
-	// complete level
-	else if ((m_flag.getPosition() - m_player.getPosition()).length() < 75)
-	{
-		m_alertText.setCharacterSize(24);
-		m_alertText.setPosition(inner_top_left);
-		m_alertText.setString(m_promptMessages[2]);
 	}
 	else
 	{
@@ -283,10 +255,14 @@ void LevelTwoWithTiles::render()
 	beginDraw();
 	m_bgtilemap.render(m_window);
 	m_tilemap.render(m_window);
-	if (m_boopBlock.isAlive()) m_window.draw(m_boopBlock);
 	m_window.draw(m_flag);
 	m_window.draw(m_player);
-	if (m_coin.isAlive()) m_window.draw(m_coin);
 	m_window.draw(m_alertText);
+
+	if (m_player.getReset())
+	{
+		m_window.draw(m_player.getDeathscreen());
+	}
+
 	endDraw();
 }

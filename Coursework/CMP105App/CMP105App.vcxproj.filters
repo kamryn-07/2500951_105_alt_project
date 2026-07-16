@@ -78,6 +78,12 @@
     <ClCompile Include="KillObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TriggerObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Deathscreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -135,6 +141,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KillObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Deathscreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

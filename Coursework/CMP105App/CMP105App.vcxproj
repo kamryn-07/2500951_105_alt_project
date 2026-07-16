@@ -183,6 +183,7 @@ sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Coin.cpp" />
+    <ClCompile Include="Deathscreen.cpp" />
     <ClCompile Include="Flag.cpp" />
     <ClCompile Include="Framework\Animation.cpp" />
     <ClCompile Include="Framework\AudioManager.cpp" />
@@ -201,10 +202,12 @@ sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="TriggerObject.cpp" />
     <ClCompile Include="TriggerZone.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coin.h" />
+    <ClInclude Include="Deathscreen.h" />
     <ClInclude Include="Flag.h" />
     <ClInclude Include="Framework\Animation.h" />
     <ClInclude Include="Framework\AudioManager.h" />
@@ -222,6 +225,7 @@ sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="TriggerObject.h" />
     <ClInclude Include="TriggerZone.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

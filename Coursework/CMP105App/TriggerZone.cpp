@@ -1,13 +1,20 @@
 #include "TriggerZone.h"
 
-TriggerZone::TriggerZone(sf::Vector2f size, sf::Vector2f pos)
+TriggerZone::TriggerZone(float pos)
 {
-	setSize(size);
-	setPosition(pos);
+	m_xpos = pos;
 }
 
-void TriggerZone::collisionResponse(GameObject& collider)
+void TriggerZone::onTrigger()
 {
+	if (m_isTriggerable)
+	{
+		for (auto& t : m_triggerObjects)
+		{
+			t.onTrigger();
+		}
+	}
 	m_isTriggerable = false;
-	std::cout << "collision" << '\n';
 }
+
+float TriggerZone::getXPos() { return m_xpos; }

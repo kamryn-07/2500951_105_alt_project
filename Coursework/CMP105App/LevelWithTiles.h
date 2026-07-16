@@ -1,3 +1,5 @@
+/*
+
 #pragma once
 #include "Scene.h"
 #include "Framework/Collision.h"
@@ -40,3 +42,4 @@ private:
 
 };
 
+*/

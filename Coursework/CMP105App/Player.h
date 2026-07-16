@@ -3,6 +3,7 @@
 #include "Framework/Animation.h"
 #include <iostream>
 #include "Framework/AudioManager.h"
+#include "Deathscreen.h"
 
 
 class Player :
@@ -26,6 +27,13 @@ public:
     bool canDoubleJump() { return m_canDoubleJump; };
     void setAudio(AudioManager* audio) { m_audio = audio; };
 
+    void setDeathscreen(Deathscreen& deathscreen) { m_deathscreen = deathscreen; };
+    Deathscreen getDeathscreen() { return m_deathscreen; };
+    bool getReset() { return m_reset; };
+    void setReset(bool reset) { m_reset = reset; };
+    bool getdsDebounce() { return m_dsDebounce; };
+    void setdsDebounce(bool dsDebounce) { m_dsDebounce = dsDebounce; };
+
 private:
     sf::Texture m_dinoTexture;
     Animation* m_currAnim;
@@ -41,9 +49,14 @@ private:
     sf::Vector2f m_endPosition;
     bool m_leverPulled = false;
     bool m_gameEndTriggered = false;
-    bool m_canDoubleJump;
+    bool m_canDoubleJump = true;
     bool m_hasDoubleJumped;
     AudioManager* m_audio;
+
+    // deathscreen stuffz
+    bool m_dsDebounce = false;
+    bool m_reset = false;
+    Deathscreen m_deathscreen;
 
     const float SPRINT_COOLDOWN = 0.45f;
     const float SPRINT_SPEED_MULT = 1.10f;
@@ -53,7 +66,7 @@ private:
     const float DRAG_FACTOR = 0.0f;
     const float AIR_DRAG_FACTOR = 0.99f;
     const float TURN_DRAG = 1.0f;
-    const float JUMP_FORCE = 4.5f;
+    const float JUMP_FORCE = 5.5f;
     const float SPRINT_ANIM_THRESHOLD = 999.0f;     //1.2f * SPEED;     // set sprint anim threshold real high for now until (if) sprint frames are animated for new spritesheet
     const float ACTIVATE_RANGE_SQUARED = 1250.0f;
 

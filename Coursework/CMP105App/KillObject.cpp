@@ -4,7 +4,7 @@ KillObject::KillObject()
 {
 }
 
-void collisionResponse(GameObject& collider)
+void KillObject::collisionResponse(GameObject & collider)
 {
 
 }
