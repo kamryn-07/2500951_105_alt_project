@@ -84,19 +84,12 @@ void Player::handleInput(float dt)
 
 void Player::update(float dt)
 {
-
-	
-
 	// newtonian model
 	m_accel.y += GRAVITY;
 
-	if (fabs(m_velocity.x) < X_VELOCITY_LIMIT)		// implement x velocity limit to prevent unprecendented speeds from being built
-	{
-		m_velocity.x += dt * m_accel.x;
-	}
+	// remove x acceleration to allow for precision movement
+	m_velocity.x = m_accel.x;
 	m_velocity.y += dt * m_accel.y;
-	
-	std::cout << m_velocity.y << '\n';
 
 	if (m_isGrounded && abs(m_accel.x) < 1.f) m_velocity *= DRAG_FACTOR;
 	else if (!m_isGrounded) m_velocity *= AIR_DRAG_FACTOR;
@@ -149,18 +142,10 @@ void Player::collisionResponse(GameObject& collider)
 		if (playerCollider.position.x < wallBounds.position.x - 0.1f)	// also add some general tolerance to this
 		{
 			move({ -overlap->size.x, 0 });
-			if (m_velocity.x > 0.0f)		// reset player's x velocity on side-on collision (dependant on their move direction)
-			{
-				m_velocity.x = 0.0f;
-			}
 		}
 		else if (playerCollider.position.x > wallBounds.position.x + 0.1f)
 		{
 			move({ overlap->size.x, 0 });
-			if (m_velocity.x < 0.0f)
-			{
-				m_velocity.x = 0.0f;
-			}
 		}
 	}
 	else
