@@ -36,11 +36,11 @@ In addition to the proposal laid out below, there are several features which cou
 
 ## Student Details
 
-**Student Name:** William Kavanagh
+**Student Name:** Kamryn Robb
 
-**Student Number:** 0000001
+**Student Number:** 2500951
 
-**Course:** _CGAD_ / _CGT_ I am of both courses, and of none.
+**Course:** _CGT_
 
 ---
 ---

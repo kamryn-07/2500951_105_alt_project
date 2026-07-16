@@ -84,14 +84,23 @@ void Player::handleInput(float dt)
 
 void Player::update(float dt)
 {
+
+	
+
 	// newtonian model
 	m_accel.y += GRAVITY;
-	m_velocity += dt * m_accel;
+
+	if (fabs(m_velocity.x) < X_VELOCITY_LIMIT)		// implement x velocity limit to prevent unprecendented speeds from being built
+	{
+		m_velocity.x += dt * m_accel.x;
+	}
+	m_velocity.y += dt * m_accel.y;
+	
+	std::cout << m_velocity.y << '\n';
+
 	if (m_isGrounded && abs(m_accel.x) < 1.f) m_velocity *= DRAG_FACTOR;
 	else if (!m_isGrounded) m_velocity *= AIR_DRAG_FACTOR;
 	else if (m_accel.x * m_velocity.x < 0) m_velocity *= TURN_DRAG;
-
-	m_isGrounded = false;	// every frame we are falling unless proved otherwise by floor collision
 
 	if (m_sprintTimer > 0) m_sprintTimer -= dt;	// tick down the sprint cooldown
 
@@ -137,14 +146,26 @@ void Player::collisionResponse(GameObject& collider)
 	if (overlap->size.x < overlap->size.y)
 	{
 		// taller than wide -> collision is side-on
-		if (playerCollider.position.x < wallBounds.position.x)
+		if (playerCollider.position.x < wallBounds.position.x - 0.1f)	// also add some general tolerance to this
+		{
 			move({ -overlap->size.x, 0 });
-		else
+			if (m_velocity.x > 0.0f)		// reset player's x velocity on side-on collision (dependant on their move direction)
+			{
+				m_velocity.x = 0.0f;
+			}
+		}
+		else if (playerCollider.position.x > wallBounds.position.x + 0.1f)
+		{
 			move({ overlap->size.x, 0 });
+			if (m_velocity.x < 0.0f)
+			{
+				m_velocity.x = 0.0f;
+			}
+		}
 	}
 	else
 	{
-		if (playerCollider.position.y < wallBounds.position.y)
+		if (playerCollider.position.y < wallBounds.position.y - 0.1f)	// this too of course
 		{
 			// We are above the wall (Landing)
 			move({ 0, -overlap->size.y });
@@ -152,11 +173,12 @@ void Player::collisionResponse(GameObject& collider)
 			m_isGrounded = true;    // Enable jumping
 			m_hasDoubleJumped = false;	// more jumping possible
 		}
-		else
+		else if (playerCollider.position.y > wallBounds.position.y + 0.1f)
 		{
 			// We hit the ceiling (Bonk)
 			move({ 0, overlap->size.y });
 			m_velocity.y = 0;       // Stop moving up
+			m_isGrounded = false;	// every frame we are falling unless proved otherwise by floor collision
 		}
 	}
 }

@@ -79,7 +79,7 @@ int main()
 {
 
 	//Create the window
-	sf::RenderWindow window(sf::VideoMode({ 432, 432 }), "Dino Handyman");
+	sf::RenderWindow window(sf::VideoMode({ 432, 432 }), "I Wanna Be The Dino");
 	window.setVerticalSyncEnabled(true);
 
 	// Initialise input and manager objects.

@@ -45,15 +45,16 @@ private:
     bool m_hasDoubleJumped;
     AudioManager* m_audio;
 
-    const float SPRINT_COOLDOWN = 2.0f;
-    const float SPRINT_SPEED_MULT = 2.5f;
-    const float SPEED = 10.0f;
-    const float GRAVITY = 50.0f;
-    const float COEFF_OF_REST = 0.8f;
-    const float DRAG_FACTOR = 0.9f;
+    const float X_VELOCITY_LIMIT = 4.5f;                   // implement accel limit for x axis to prevent insanely high speed build up
+    const float SPRINT_COOLDOWN = 1.0f;
+    const float SPRINT_SPEED_MULT = 1.25f;
+    const float SPEED = 3.5f;
+    const float GRAVITY = 15.0f;
+    const float COEFF_OF_REST = 0.8f;                   // tweak for extremely snappy on-ground movement, but extremely floaty and commital air movement for added fun (gotta love good game design)
+    const float DRAG_FACTOR = 0.0f;
     const float AIR_DRAG_FACTOR = 0.99f;
-    const float TURN_DRAG = 0.6f;       // allow snappy decel for turning
-    const float JUMP_FORCE = 20.0f;
+    const float TURN_DRAG = 0.25f;
+    const float JUMP_FORCE = 6.5f;
     const float SPRINT_ANIM_THRESHOLD = 1.2f * SPEED;
     const float ACTIVATE_RANGE_SQUARED = 700.0f;
 
