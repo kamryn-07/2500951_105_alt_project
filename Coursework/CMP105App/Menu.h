@@ -23,7 +23,7 @@ private:
     GameObject m_titleImage;
     sf::Texture m_titleSplash;
 
-    sf::Color m_defaultButtonColour = sf::Color(100, 250, 100, 50);
-    sf::Color m_hoverButtonColour = sf::Color(80, 230, 80, 150);
+    sf::Color m_defaultButtonColour = sf::Color(255, 255, 255, 125);
+    sf::Color m_hoverButtonColour = sf::Color(255, 255, 255, 255);
 };
 

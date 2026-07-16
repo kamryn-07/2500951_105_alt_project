@@ -7,21 +7,21 @@ Menu::Menu(sf::RenderWindow& hwnd, Input& in, GameState& gs, AudioManager& aud) 
 		std::cerr << "failed to load bitcount font";
 
 	m_playButtonLabel.setCharacterSize(24);		// setup labels
-	m_playButtonLabel.setPosition({ 185,93 });
+	m_playButtonLabel.setPosition({ 175,210 });
 	m_playButtonLabel.setString("Level 1");
 	m_playButtonLabel.setFillColor(sf::Color::Black);
 	m_playButton2Label.setCharacterSize(24);
-	m_playButton2Label.setPosition({ 185,233 });
+	m_playButton2Label.setPosition({ 175,345 });
 	m_playButton2Label.setString("Level 2");
 	m_playButton2Label.setFillColor(sf::Color::Black);
 
 
 	m_playButton.setSize({ 216,100 });			// setup buttons
-	m_playButton.setPosition({ 108,58 });
+	m_playButton.setPosition({ 108,180 });
 	m_playButton.setCollisionBox({ {0,0}, m_playButton.getSize()});
 	m_playButton.setFillColor(m_defaultButtonColour); 
 	m_play2Button.setSize({ 216,100 });			
-	m_play2Button.setPosition({ 108,198 });
+	m_play2Button.setPosition({ 108,315 });
 	m_play2Button.setCollisionBox({ {0,0}, m_playButton.getSize() });
 	m_play2Button.setFillColor(m_defaultButtonColour);
 
