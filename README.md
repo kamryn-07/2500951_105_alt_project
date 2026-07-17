@@ -30,15 +30,15 @@ author(s)
 
 ## Must Have Features
 
-* Trigger-able/Moving Hazards: There will be new hazards (on touch will reset the player to the start of the current level) implemented which will either move or reveal themselves in someway if triggered by the player's movement or position.
+* Visual Overhaul: A change will be applied to (most) sprites in some form to allow for a more unique and abstract visual style to complement the simple gameplay. This could include: Main Menu (in accordance with the new name too), player sprite, tile maps for the background, regular ground, decorative and interactable objects.
 * Overhaul Movement and Polish Movement: The movement of the player character will be entirely changed to allow for more 'precision' movements (e.g.: lower jump height and slower move speed, plus removal of acceleration entirely). Also fix some bugs and "polish" the base movement system, e.g. running into a wall and holding the same directional key during jumping preserves velocity.
 
 
 
 ## Should Have Features
 
-* Visual Overhaul: A change will be applied to (most) sprites in some form to allow for a more unique and abstract visual style to complement the simple gameplay. This could include: Main Menu (in accordance with the new name too), player sprite, tile maps for the background, regular ground, decorative and interactable objects.
 * Enhanced Death: In the nature of this being a rage game there should be a snappy kill-screen and a death counter which will read out to a file to persist across game reopening, just to emphasize what the game is all about.
+* Trigger-able/Moving Hazards: There will be new hazards (on touch will reset the player to the start of the current level) implemented which will either move or reveal themselves in someway if triggered by the player's movement or position.
 
 
 
