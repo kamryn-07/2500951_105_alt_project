@@ -37,14 +37,15 @@ Level1::Level1(sf::RenderWindow& window, Input& input, GameState& gameState, Aud
 
 	sf::Vector2u mapDimensions{ 40, 8 };
 	std::vector<int> tileMap = {
-		b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b, b, b, b, b, b, b, b, b, b  , b  , b  , b  , b  , b  , b  , b  , b  ,
-		b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , 145, b  , b  , 145, b  , b  , b  , b  , b  , b, b, b, b, b, b, b, b, b, b  , b  , b  , b  , b  , b  , b  , b  , b  ,
-		b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , 101, 102, 102, 102, 102, 103, b  , b  , b  , b  , b, b, b, b, b, b, b, b, b, b  , b  , b  , b  , b  , b  , b  , b  , b  ,
-		b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , 121, 122, 122, 122, 122, 123, b  , b  , b  , b  , b, b, b, b, b, b, b, b, b, b  , b  , b  , b  , b  , b  , b  , b  , b  ,
-		b  , b  , b  , 22  , b  , b  , b  , b  , b  , b  , b  , b  , 121, 122, 122, 122, 122, 123, b  , b  , b  , b  , b, b, b, b, b, b, b, b, b, b  , b  , b  , b  , b  , b  , b  , b  , b  ,
-		b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , b  , 121, 122, 122, 122, 122, 123, b  , b  , b  , b  , b, b, b, b, b, b, b, b, b, b  , b  , b  , b  , b  , b  , b  , b  , b  ,
-		21 , 22 , 22 , 22 , b , b , 22 , 22 , 22 , 22 , 22 , 22 , 25 , 122, 122, 122, 122, 24 , 22 , 22 , 22 , 23 , b, b, b, b, b, b, b, b, b, 21 , 22 , 22 , 22 , 22 , 22 , 22 , 22 , 23 ,
-		141, 142, 142, 142, b, b, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 143, b, b, b, b, b, b, b, b, b, 141, 142, 142, 142, 142, 142, 142, 142, 143
+		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	22,	22,	22,
+		22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,
+
 	};
 
 	// instantiate trigger zones
@@ -61,7 +62,7 @@ Level1::Level1(sf::RenderWindow& window, Input& input, GameState& gameState, Aud
 
 	// setup background
 	tile_size = 24;
-	num_columns = 8;
+	num_columns = 8;d
 	num_rows = 3;
 	// 24 * 9 = 216, a multiple of 72, the LCM of the player and tile size.
 	tile.setSize(sf::Vector2f(tile_size * 9, tile_size * 9));

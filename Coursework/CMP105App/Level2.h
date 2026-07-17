@@ -10,7 +10,7 @@
 #include "TriggerZone.h"
 #include "Deathscreen.h"
 
-#include <algorithm> // for clamp
+#include <algorithm>        // for clamp
 
 
 class Level2 :
