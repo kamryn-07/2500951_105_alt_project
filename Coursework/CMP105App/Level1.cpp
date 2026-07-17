@@ -37,20 +37,17 @@ Level1::Level1(sf::RenderWindow& window, Input& input, GameState& gameState, Aud
 
 	sf::Vector2u mapDimensions{ 40, 8 };
 	std::vector<int> tileMap = {
-		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
-		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
-		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
-		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
-		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
-		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
-		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	22,	22,	22,
-		22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,	22,
+		b,	b,	b,	b,	b,	b,	b,	b,	22,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	22,	b,	142,b,	b,	b,	b,	b,	142,b,	b,	b,	b,	b,	142,b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	22,	b,	b,	b,	b,	22,	22,	22,	22,	22,	b,	22,	b,	142,b,	b,	b,	b,	b,	142,b,	b,	b,	b,	b,	142,b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	142,b,	22,	b,	b,	b,	142,b,	b,	b,	b,	142,b,	142,b,	b,	b,	b,	b,	142,b,	b,	b,	b,	b,	142,b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	142,b,	22,	22,	b,	b,	142,b,	b,	b,	b,	142,b,	142,b,	b,	b,	b,	b,	142,b,	b,	b,	b,	b,	142,b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	142,b,	b,	b,	b,	22,	142,b,	b,	b,	b,	142,b,	142,b,	b,	b,	b,	b,	142,b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	22,	22,	b,	b,	b,	22,	b,	b,	b,	b,	b,	22,	b,	142,b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	22,	b,	b,	b,	b,	b,	b,
+		b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	b,	22,	b,	b,	b,	b,	b,	22,	b,	b,	b,	b,	b,	b,	b,	22,	b,	b,	b,	b,	b,	22,	b,	b,	b,	22,	22,	22,
+		22,	22,	22,	22,	22,	b,	b,	b,	b,	b,	22,	22,	22,	22,	22,	22,	22,	b,	b,	b,	b,	22,	b,	b,	b,	b,	b,	22,	b,	b,	b,	b,	b,	22,	22,	22,	22,	22,	22,	22,
 
 	};
 
-	// instantiate trigger zones
-	TriggerZone t0(200);
-	m_triggerZones.push_back(t0);
 
 	m_tilemap.loadTexture("gfx/tilemap.png");
 	m_tilemap.setTileSet(tileSet);
@@ -62,7 +59,7 @@ Level1::Level1(sf::RenderWindow& window, Input& input, GameState& gameState, Aud
 
 	// setup background
 	tile_size = 24;
-	num_columns = 8;d
+	num_columns = 8;
 	num_rows = 3;
 	// 24 * 9 = 216, a multiple of 72, the LCM of the player and tile size.
 	tile.setSize(sf::Vector2f(tile_size * 9, tile_size * 9));
@@ -77,6 +74,41 @@ Level1::Level1(sf::RenderWindow& window, Input& input, GameState& gameState, Aud
 			{tile_size, tile_size} });
 		tile.setCollider(false);		// don't collide with background
 		tileSet.push_back(tile);
+	}
+
+	// set up trigger objects
+	m_bridge.push_back(m_bridge0);	// demo the trigger objects
+	m_bridge.push_back(m_bridge1);
+	m_bridge.push_back(m_bridge2);
+	m_bridge.push_back(m_bridge3);
+	m_bridge.push_back(m_bridge4);
+
+	// set up bridge
+	int i = 0;
+	m_tileTexture.loadFromFile("gfx/tilemap.png");
+	for (auto& t : m_bridge)
+	{
+		t.setTexture(&m_tileTexture);
+		t.setTextureRect({ {10 * 19,0}, { 18,18 } });
+		t.setCollider(true);
+		//t.setPosition({ (24.0f * 5.0f) + (24.0f * i), 24.0f });
+		t.setSize({ 72, 72 });
+		t.setPosition({ (72.0f * 5.0f) + (72.0f * i), 504.0f});
+		i++;
+	}
+
+	// instantiate trigger zones
+	TriggerZone t0(400.0f);
+	m_triggerZones.push_back(t0);
+
+	// assign trigger objects
+	for (auto& t : m_bridge)
+	{
+		m_triggerObjects.push_back(t);
+	}
+	for (auto t : m_bridge)
+	{
+		t0.m_triggerObjects.push_back(t);
 	}
 
 	mapDimensions = { 14,5 };
@@ -188,7 +220,11 @@ void Level1::update(float dt)
 	{
 		if (m_player.getPosition().x >= t.getXPos())
 		{
-			t.onTrigger();
+			int x = t.onTrigger();
+			if (x == 0)
+			{
+				m_drawBridge = false;
+			}
 		}
 	}
 
@@ -263,6 +299,14 @@ void Level1::render()
 	m_window.draw(m_flag);
 	m_window.draw(m_player);
 	m_window.draw(m_alertText);
+	if (m_drawBridge)
+	{
+		for (auto& t : m_triggerObjects)
+		{
+
+			m_window.draw(t);
+		}
+}
 
 	if (m_player.getReset())
 	{

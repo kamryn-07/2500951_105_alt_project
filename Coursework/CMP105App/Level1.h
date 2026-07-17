@@ -9,6 +9,7 @@
 #include "KillObject.h"     // new additions woah
 #include "TriggerZone.h"
 #include "Deathscreen.h"
+#include "TriggerObject.h"
 
 #include <algorithm> // for clamp
 
@@ -24,6 +25,9 @@ public:
     void render() override;
     void onBegin() override;
     void onEnd() override;
+
+    bool getDrawBridge() { return m_drawBridge; }
+    void setDrawBridge(bool t) { m_drawBridge = t; }
 
 private:
     void updateCameraAndBackground();
@@ -51,6 +55,14 @@ private:
 
     std::vector<TriggerZone> m_triggerZones;	    // trigger zone vector
     std::vector<TriggerObject> m_triggerObjects;    // '' obj
+    std::vector<TriggerObject> m_bridge;
+    bool m_drawBridge = true;
+
+    TriggerObject m_bridge0;
+    TriggerObject m_bridge1;
+    TriggerObject m_bridge2;
+    TriggerObject m_bridge3;
+    TriggerObject m_bridge4;
 
     std::vector<std::string> m_promptMessages =
     {

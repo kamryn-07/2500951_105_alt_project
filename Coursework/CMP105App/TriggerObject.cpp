@@ -2,10 +2,7 @@
 
 TriggerObject::TriggerObject()
 {
-
-}
-
-void TriggerObject::onTrigger()
-{
-
+	setCollider(true);
+	setFillColor({ 255, 255, 255, 255 });
+	setSize({ 24.0f, 24.0f });
 }
