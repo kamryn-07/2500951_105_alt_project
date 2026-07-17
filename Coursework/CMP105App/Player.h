@@ -28,7 +28,7 @@ public:
     void setAudio(AudioManager* audio) { m_audio = audio; };
 
     void setDeathscreen(Deathscreen& deathscreen) { m_deathscreen = deathscreen; };
-    Deathscreen getDeathscreen() { return m_deathscreen; };
+    Deathscreen& getDeathscreen();
     bool getReset() { return m_reset; };
     void setReset(bool reset) { m_reset = reset; };
     bool getdsDebounce() { return m_dsDebounce; };
@@ -61,12 +61,12 @@ private:
     const float SPRINT_COOLDOWN = 0.45f;
     const float SPRINT_SPEED_MULT = 1.10f;
     const float SPEED = 2.25f;
-    const float GRAVITY = 15.0f;
+    const float GRAVITY = 17.5f;
     const float COEFF_OF_REST = 1.0f;                   // tweak all this for extremely snappy movement (aka get rid of acceleration and tweak other random stuff)
-    const float DRAG_FACTOR = 0.0f;
+    const float DRAG_FACTOR = 1.0f;
     const float AIR_DRAG_FACTOR = 0.99f;
     const float TURN_DRAG = 1.0f;
-    const float JUMP_FORCE = 5.5f;
+    const float JUMP_FORCE = 4.5f;
     const float SPRINT_ANIM_THRESHOLD = 999.0f;     //1.2f * SPEED;     // set sprint anim threshold real high for now until (if) sprint frames are animated for new spritesheet
     const float ACTIVATE_RANGE_SQUARED = 1250.0f;
 

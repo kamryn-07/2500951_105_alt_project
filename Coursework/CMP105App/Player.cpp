@@ -84,6 +84,7 @@ void Player::handleInput(float dt)
 
 void Player::update(float dt)
 {
+
 	// newtonian model
 	m_accel.y += GRAVITY;
 
@@ -176,6 +177,12 @@ bool Player::inLeverRange()
 bool Player::inEndRange()
 {
 	return (getPosition() - m_endPosition).lengthSquared() < ACTIVATE_RANGE_SQUARED;
+}
+
+// get deathscreen method
+Deathscreen& Player::getDeathscreen()
+{
+	return m_deathscreen;
 }
 
 void Player::reset()

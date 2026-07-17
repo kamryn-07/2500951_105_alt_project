@@ -13,11 +13,11 @@
 #include <algorithm> // for clamp
 
 
-class LevelTwoWithTiles :
+class Level1 :
     public Scene
 {
 public:
-    LevelTwoWithTiles(sf::RenderWindow& window, Input& input, GameState& gameState, AudioManager& audio);
+    Level1(sf::RenderWindow& window, Input& input, GameState& gameState, AudioManager& audio);
 
     void handleInput(float dt) override;
     void update(float dt) override;
@@ -34,7 +34,7 @@ private:
 
     Deathscreen deathscreen;    // deathscreen scary stuff
     Player m_player;
-    
+
     float m_time = 0.0f;
     float m_timeSnap = 0.0f;
 

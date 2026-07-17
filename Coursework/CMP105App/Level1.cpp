@@ -1,6 +1,6 @@
-#include "LevelTwoWithTiles.h"
+#include "Level1.h"
 
-LevelTwoWithTiles::LevelTwoWithTiles(sf::RenderWindow& window, Input& input, GameState& gameState, AudioManager& audio)
+Level1::Level1(sf::RenderWindow& window, Input& input, GameState& gameState, AudioManager& audio)
 	: Scene(window, input, gameState, audio), m_alertText(m_font)
 {
 	GameObject tile;
@@ -121,17 +121,17 @@ LevelTwoWithTiles::LevelTwoWithTiles(sf::RenderWindow& window, Input& input, Gam
 	m_alertText.setCharacterSize(36);
 	m_alertText.setFillColor(sf::Color::Black);
 
-	
+
 
 }
 
-void LevelTwoWithTiles::onBegin()
+void Level1::onBegin()
 {
 	m_player.setPosition({ 100, 100 });
 	m_audio.playMusicbyName("bgm3");
 }
 
-void LevelTwoWithTiles::onEnd()
+void Level1::onEnd()
 {
 	// reset player
 	m_player.setCanDoubleJump(true);
@@ -140,7 +140,7 @@ void LevelTwoWithTiles::onEnd()
 	m_audio.stopAllMusic();
 }
 
-void LevelTwoWithTiles::handleInput(float dt)
+void Level1::handleInput(float dt)
 {
 	m_player.handleInput(dt);
 
@@ -154,12 +154,12 @@ void LevelTwoWithTiles::handleInput(float dt)
 	}
 }
 
-void LevelTwoWithTiles::update(float dt)
+void Level1::update(float dt)
 {
 
 	// update ds
 	m_player.getDeathscreen().setPosition({ m_window.getView().getCenter().x, m_window.getView().getCenter().y });
-	m_player.getDeathscreen().setRotation(sf::radians(m_time*10));
+	m_player.getDeathscreen().setRotation(sf::radians(m_time * 10));
 
 	m_player.update(dt);
 	m_flag.update(dt);
@@ -198,7 +198,7 @@ void LevelTwoWithTiles::update(float dt)
 		if (t.isCollider() && Collision::checkBoundingBox(m_player, t))
 		{
 			m_player.collisionResponse(t);
-		}	
+		}
 	}
 
 	// reset if fallen too far
@@ -212,7 +212,7 @@ void LevelTwoWithTiles::update(float dt)
 	checkAndSetMessages();
 }
 
-void LevelTwoWithTiles::updateCameraAndBackground()
+void Level1::updateCameraAndBackground()
 {
 	auto view = m_window.getView();
 	auto player_pos = m_player.getPosition() + m_player.getSize() * 0.5f;
@@ -230,12 +230,12 @@ void LevelTwoWithTiles::updateCameraAndBackground()
 }
 
 // sets prompt text and position 
-void LevelTwoWithTiles::checkAndSetMessages()
+void Level1::checkAndSetMessages()
 {
 	// get position 25% in from top and left (get middle, half both dimensions)
 	sf::Vector2f inner_top_left = m_window.getView().getCenter();
-	sf::Vector2f window_size = { 
-		static_cast<float>(m_window.getSize().x), 
+	sf::Vector2f window_size = {
+		static_cast<float>(m_window.getSize().x),
 		static_cast<float>(m_window.getSize().y) };
 	inner_top_left -= window_size * 0.25f;
 
@@ -254,7 +254,7 @@ void LevelTwoWithTiles::checkAndSetMessages()
 
 
 
-void LevelTwoWithTiles::render()
+void Level1::render()
 {
 	beginDraw();
 	m_bgtilemap.render(m_window);
