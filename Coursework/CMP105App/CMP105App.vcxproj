@@ -195,7 +195,7 @@ sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="Framework\SoundObject.cpp" />
     <ClCompile Include="Framework\TileMap.cpp" />
     <ClCompile Include="KillObject.cpp" />
-    <ClCompile Include="LevelTwoWithTiles.cpp" />
+    <ClCompile Include="Level2.cpp" />
     <ClCompile Include="Level1.cpp" />
     <ClCompile Include="Lever.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -219,7 +219,7 @@ sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="Framework\SoundObject.h" />
     <ClInclude Include="Framework\TileMap.h" />
     <ClInclude Include="KillObject.h" />
-    <ClInclude Include="LevelTwoWithTiles.h" />
+    <ClInclude Include="Level2.h" />
     <ClInclude Include="Level1.h" />
     <ClInclude Include="Lever.h" />
     <ClInclude Include="Menu.h" />

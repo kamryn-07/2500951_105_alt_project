@@ -60,7 +60,7 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LevelTwoWithTiles.cpp">
+    <ClCompile Include="Level2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Coin.cpp">
@@ -125,7 +125,7 @@
     <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LevelTwoWithTiles.h">
+    <ClInclude Include="Level2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Coin.h">

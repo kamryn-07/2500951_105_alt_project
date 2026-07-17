@@ -13,11 +13,11 @@
 #include <algorithm> // for clamp
 
 
-class LevelTwoWithTiles :
+class Level2 :
     public Scene
 {
 public:
-    LevelTwoWithTiles(sf::RenderWindow& window, Input& input, GameState& gameState, AudioManager& audio);
+    Level2(sf::RenderWindow& window, Input& input, GameState& gameState, AudioManager& audio);
 
     void handleInput(float dt) override;
     void update(float dt) override;

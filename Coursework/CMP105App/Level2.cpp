@@ -1,6 +1,6 @@
-#include "LevelTwoWithTiles.h"
+#include "Level2.h"
 
-LevelTwoWithTiles::LevelTwoWithTiles(sf::RenderWindow& window, Input& input, GameState& gameState, AudioManager& audio)
+Level2::Level2(sf::RenderWindow& window, Input& input, GameState& gameState, AudioManager& audio)
 	: Scene(window, input, gameState, audio), m_alertText(m_font)
 {
 	GameObject tile;
@@ -125,13 +125,13 @@ LevelTwoWithTiles::LevelTwoWithTiles(sf::RenderWindow& window, Input& input, Gam
 
 }
 
-void LevelTwoWithTiles::onBegin()
+void Level2::onBegin()
 {
 	m_player.setPosition({ 100, 100 });
 	m_audio.playMusicbyName("bgm3");
 }
 
-void LevelTwoWithTiles::onEnd()
+void Level2::onEnd()
 {
 	// reset player
 	m_player.setCanDoubleJump(true);
@@ -140,7 +140,7 @@ void LevelTwoWithTiles::onEnd()
 	m_audio.stopAllMusic();
 }
 
-void LevelTwoWithTiles::handleInput(float dt)
+void Level2::handleInput(float dt)
 {
 	m_player.handleInput(dt);
 
@@ -154,7 +154,7 @@ void LevelTwoWithTiles::handleInput(float dt)
 	}
 }
 
-void LevelTwoWithTiles::update(float dt)
+void Level2::update(float dt)
 {
 
 	// update ds
@@ -212,7 +212,7 @@ void LevelTwoWithTiles::update(float dt)
 	checkAndSetMessages();
 }
 
-void LevelTwoWithTiles::updateCameraAndBackground()
+void Level2::updateCameraAndBackground()
 {
 	auto view = m_window.getView();
 	auto player_pos = m_player.getPosition() + m_player.getSize() * 0.5f;
@@ -230,7 +230,7 @@ void LevelTwoWithTiles::updateCameraAndBackground()
 }
 
 // sets prompt text and position 
-void LevelTwoWithTiles::checkAndSetMessages()
+void Level2::checkAndSetMessages()
 {
 	// get position 25% in from top and left (get middle, half both dimensions)
 	sf::Vector2f inner_top_left = m_window.getView().getCenter();
@@ -254,7 +254,7 @@ void LevelTwoWithTiles::checkAndSetMessages()
 
 
 
-void LevelTwoWithTiles::render()
+void Level2::render()
 {
 	beginDraw();
 	m_bgtilemap.render(m_window);

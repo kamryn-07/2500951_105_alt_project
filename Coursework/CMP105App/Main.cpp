@@ -12,7 +12,7 @@
 #include "Framework/AudioManager.h"
 #include "Framework/GameState.h"
 #include "Level1.h"
-#include "LevelTwoWithTiles.h"
+#include "Level2.h"
 
 #ifndef SFML_VERSION_MAJOR
 	#error "SFML 3 is required for this framework."
@@ -92,7 +92,7 @@ int main()
 
 	Menu menu(window, input, gameState, audioManager);
 	Level1 level_one(window, input, gameState, audioManager);
-	LevelTwoWithTiles level_two(window, input, gameState, audioManager);
+	Level2 level_two(window, input, gameState, audioManager);
 	Scene* currentScene = &menu;
 
 	// Initialise objects for delta time
